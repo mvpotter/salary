@@ -24,6 +24,10 @@
 				<p>Calculate your salary in accordance with a time period</p>
 			</div>
 			<div class="row">
+				<label>Hour rate (40 hrs week):</label>
+				<input type="text" maxlength = "19" ng-model="hourRate" placeholder="Enter hour rate" ng-change="update_hour_rate()" />
+			</div>
+			<div class="row">
 				<label>Monthly salary:</label>
 				<input type="text" maxlength = "19" ng-model="monthly" placeholder="Enter monthly salary" ng-change="update_monthly_salary()" />
 			</div>
