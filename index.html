@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="salary">
+	<head>
+		<title>Salary</title>
+
+		<!-- Libraries -->
+		<link rel="stylesheet" type="text/css" href="libs/foundation/css/foundation.min.css">
+		<link rel="stylesheet" type="text/css" href="libs/foundation/css/normalize.css">
+
+		<script type="text/javascript" src="libs/angular/angular.min.js"></script>
+
+		<!-- Project sources -->
+
+		<script type="text/javascript" src="salary/js/salary.js"></script>
+	</head>
+	<body ng-controller="SalaryCtrl">
+		<div class="small-4 small-offset-4 columns">
+			<div class="row">
+				<h1>Salary</h1>
+			</div>
+			<div class="row">
+				<p>Calculate your salary in accordance with a time period</p>
+			</div>
+			<div class="row">
+				<label>Monthly salary:</label>
+				<input type="text" maxlength = "19" ng-model="monthly" placeholder="Enter monthly salary" ng-change="update_monthly_salary()" />
+			</div>
+			<div class="row">
+				<label>Quarter salary:</label>
+				<input type="text" maxlength = "20" ng-model="quarter" placeholder="Enter quarter salary" ng-change="update_quarter_salary()" />
+			</div>
+			<div class="row">
+				<label>Annual salary:</label>
+				<input type="text" maxlength = "21" ng-model="annual" placeholder="Enter annual salary" ng-change="update_annual_salary()" />
+			</div>
+		</div>
+	</body>
+</html>
