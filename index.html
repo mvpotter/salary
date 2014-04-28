@@ -13,9 +13,10 @@
 
 		<!-- Project sources -->
 
+		<script type="text/javascript" src="salary/js/exchangeService.js"></script>
 		<script type="text/javascript" src="salary/js/salary.js"></script>
 	</head>
-	<body ng-controller="SalaryCtrl">
+	<body ng-controller="salaryController">
 		<div class="small-12 large-4 large-offset-4 columns">
 			<div class="row">
 				<h1>Salary</h1>
@@ -38,6 +39,10 @@
 			<div class="row">
 				<label>Annual salary:</label>
 				<input type="text" maxlength = "21" ng-model="annual" placeholder="Enter annual salary" ng-change="update_annual_salary()" />
+			</div>
+			<div class="row">
+				<label>Currency:</label>
+				<select ng-model="currency" ng-options="currency for currency in currencies" ng-change="change_currency()"></select>
 			</div>
 		</div>
 	</body>

@@ -1,11 +1,15 @@
-var app = angular.module('salary', []);
+var app = angular.module('salary', ['service']);
 
-app.controller('SalaryCtrl', function($scope) {
+app.controller('salaryController', function($scope, exchangeService) {
 
 	var WORK_HOURS_IN_A_MONTH = 200;
 	var MONTHS_IN_A_QUARTER = 3;
 	var MONTHS_IN_A_YEAR = 12;
 	var QUARTERS_IN_A_YEAR = 4;
+
+	$scope.currencies = ['RUB', 'EUR', 'USD', 'GBP', 'CHF'];
+	$scope.currency = $scope.currencies[0];
+	$scope.oldCurrency = $scope.currencies[0];
 
 	$scope.update_hour_rate = function() {
 		$scope.monthly = $scope.hourRate * WORK_HOURS_IN_A_MONTH; 
@@ -26,6 +30,19 @@ app.controller('SalaryCtrl', function($scope) {
 		$scope.quarter = $scope.annual / QUARTERS_IN_A_YEAR;
 		$scope.monthly = $scope.quarter / MONTHS_IN_A_QUARTER;
 		$scope.hourRate = $scope.monthly / WORK_HOURS_IN_A_MONTH;
+	};
+
+	$scope.change_currency = function() {
+		if ($scope.currency != $scope.oldCurrency) {
+			exchangeService.getRate($scope.oldCurrency, $scope.currency, successCallback);	
+		}	
+	};
+
+	successCallback = function(data) {
+		$scope.oldCurrency = $scope.currency;
+		var rate = parseFloat(data.query.results.row.rate);
+		$scope.hourRate = ($scope.hourRate * rate).toFixed(2).toString();
+		$scope.update_hour_rate();
 	};
 
 });
