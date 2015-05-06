@@ -2,7 +2,7 @@ var app = angular.module('salary', ['service']);
 
 app.controller('salaryController', function($scope, exchangeService) {
 
-	var WORK_HOURS_IN_A_MONTH = 200;
+	var WORK_HOURS_IN_A_MONTH = 165;
 	var MONTHS_IN_A_QUARTER = 3;
 	var MONTHS_IN_A_YEAR = 12;
 	var QUARTERS_IN_A_YEAR = 4;
